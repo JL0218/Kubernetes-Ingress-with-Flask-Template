@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-2
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: flask-app-2
+  template:
+    metadata:
+      labels:
+        app: flask-app-2
+
+    spec:
+      containers:
+        - name: flask-app-container-2
+          image: flask-kubernetes2
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5001
+              protocol: TCP
